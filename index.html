@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f1e8">
+  <meta name="description" content="AtlasReid — a tactile, offline-ready industrial portfolio. An experimental book of objects, interaction and everyday life.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="AtlasReid">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./assets/model-viewer.min.js"></script>
+  <script type="module" src="./app.js"></script>
+  <title>AtlasReid — Objects & Interaction</title>
+</head>
+<body>
+  <div class="app-shell">
+    <main>
+      <div class="portfolio-workspace">
+        <section class="book-stage" aria-label="Interactive portfolio book">
+          <div class="book" id="book" data-layout="single" tabindex="0" aria-label="Portfolio. Drag an outside page edge to turn, or use the corner arrows.">
+            <div class="book-page base-page left-page" id="left-page"></div>
+            <div class="book-page base-page right-page" id="right-page"></div>
+            <div class="spine" aria-hidden="true"></div>
+            <div class="turning-sheet" id="turning-sheet" aria-hidden="true" inert hidden></div>
+            <div class="edge-handle edge-prev" id="edge-prev" aria-hidden="true"></div>
+            <div class="edge-handle edge-next" id="edge-next" aria-hidden="true"></div>
+            <nav class="book-navigation" aria-label="Turn portfolio pages">
+              <button id="prev-page" aria-label="Previous page" class="arrow-button" type="button">←</button>
+              <div class="book-position"><span id="turn-hint">Drag an edge to turn</span><span id="page-counter" aria-live="polite">01 <span>/ 08</span></span></div>
+              <button id="next-page" aria-label="Next page" class="arrow-button" type="button">→</button>
+            </nav>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div id="announcement" class="sr-only" aria-live="polite"></div>
+  <dialog id="offline-dialog" class="utility-dialog" aria-labelledby="offline-title">
+    <div class="dialog-heading"><span class="eyebrow">A PORTFOLIO IN YOUR POCKET</span><button class="close-button" data-close aria-label="Close portfolio settings">×</button></div>
+    <h2 id="offline-title">Portfolio settings.</h2>
+    <h3 class="settings-section-title" id="contents-title">Contents</h3>
+    <p class="settings-description">Choose a page to jump straight to it.</p>
+    <nav class="settings-chapters" aria-labelledby="contents-title">
+      <button class="chapter-button active" data-page="0"><span class="contents-label">Cover &amp; introduction</span><span class="contents-page">Page 1 <span aria-hidden="true">→</span></span></button>
+      <button class="chapter-button" data-page="2"><span class="contents-label">Behaviour Button</span><span class="contents-page">Page 3 <span aria-hidden="true">→</span></span></button>
+      <button class="chapter-button" data-page="4"><span class="contents-label">3D model</span><span class="contents-page">Page 5 <span aria-hidden="true">→</span></span></button>
+      <button class="chapter-button" data-page="6"><span class="contents-label">Prototypes &amp; notes</span><span class="contents-page">Page 7 <span aria-hidden="true">→</span></span></button>
+    </nav>
+    <h3 class="settings-section-title">Offline copy</h3>
+    <p>The pages, photographs and 3D model are saved together on this device.</p>
+    <div class="cache-readout"><span class="status-dot" id="dialog-status-dot"></span><strong id="cache-heading">Preparing your copy…</strong><span id="cache-detail">Waiting for the offline cache.</span></div>
+    <ol class="offline-steps"><li>Wait until this says <strong>Ready offline</strong>.</li><li>Disconnect Wi-Fi or use airplane mode.</li><li>Reload this address. Turn the pages and rotate the model.</li></ol>
+    <p class="small-copy">For iPhone later: open the hosted HTTPS version in Safari, then Share → Add to Home Screen. Browser storage can be cleared by the device; this panel checks the saved files again each time.</p>
+    <div class="dialog-actions"><button class="solid-button" id="recheck-cache">Check saved files</button><button class="text-button" id="install-app" hidden>Install app ↗</button></div>
+    <p class="small-copy" id="install-hint">This local demo is ready for a future HTTPS deployment.</p>
+  </dialog>
+  <dialog id="model-dialog" class="model-dialog" aria-labelledby="model-dialog-title">
+    <div class="dialog-heading"><div><span class="eyebrow">BEHAVIOUR BUTTON / DESIGN 7</span><h2 id="model-dialog-title">A closer look.</h2></div><button class="close-button" data-close aria-label="Close expanded model">×</button></div>
+    <div id="expanded-model-slot"></div><p class="model-help">Drag to rotate · Pinch or scroll to zoom</p>
+  </dialog>
+  <noscript><div class="noscript">This interactive book needs JavaScript. <a href="./assets/hero.jpg">View the Button project photograph</a>.</div></noscript>
+</body>
+</html>

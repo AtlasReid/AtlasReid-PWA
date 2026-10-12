@@ -1,0 +1,14 @@
+{
+  "name": "atlasreid-pwa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An offline industrial design portfolio and page-turning PWA tech demo.",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
